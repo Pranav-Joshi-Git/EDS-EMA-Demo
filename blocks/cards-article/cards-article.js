@@ -14,6 +14,21 @@ export default function decorate(block) {
     });
     ul.append(li);
   });
+  // split the meta paragraph ("Category May 12") into a category tag + date
+  ul.querySelectorAll('.cards-article-card-body > p').forEach((p) => {
+    const text = p.textContent.trim();
+    const match = text.match(/^(.*?)\s+([A-Z][a-z]+\.?\s+\d{1,2})$/);
+    if (!match) return;
+    const [, tagText, dateText] = match;
+    p.textContent = '';
+    const tag = document.createElement('span');
+    tag.className = 'cards-article-tag';
+    tag.textContent = tagText;
+    const date = document.createElement('span');
+    date.className = 'cards-article-date';
+    date.textContent = dateText;
+    p.append(tag, date);
+  });
   ul.querySelectorAll('picture > img').forEach((img) => {
     const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
     moveInstrumentation(img, optimizedPic.querySelector('img'));

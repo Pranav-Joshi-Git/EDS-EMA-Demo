@@ -316,6 +316,19 @@ main .section.highlight {
   padding: 40px 0;
 }
 
+/* secondary sections: light-grey background with generous vertical padding */
+main .section.secondary {
+  background-color: var(--light-color);
+  margin: 0;
+  padding: 80px 0;
+}
+
+@media (width >= 900px) {
+  main .section.secondary {
+    padding: 128px 0;
+  }
+}
+
 main .section.dark {
   background-color: var(--dark-color);
   color: #fff;

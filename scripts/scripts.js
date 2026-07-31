@@ -175,12 +175,53 @@ export function moveInstrumentation(from, to) {
 }
 
 /**
+ * Convert a metadata key to a camelCase dataset key.
+ * @param {string} name
+ * @returns {string}
+ */
+function toCamelCaseKey(name) {
+  return name.replace(/[^a-zA-Z0-9]+(.)?/g, (_, chr) => (chr ? chr.toUpperCase() : ''));
+}
+
+/**
+ * Applies section metadata as CSS classes/data on the parent section.
+ * The imported content includes `.section-metadata` tables (key/value rows,
+ * e.g. Style | secondary). This project's aem.js does not process them, so we
+ * read each table here, add the values as classes on its section wrapper, then
+ * remove the table before decorateSections/decorateBlocks run (otherwise the
+ * leftover div is treated as an unknown block and 404s).
+ * @param {Element} main The main element
+ */
+function decorateSectionMetadata(main) {
+  main.querySelectorAll(':scope > div > .section-metadata').forEach((meta) => {
+    const section = meta.parentElement;
+    [...meta.children].forEach((row) => {
+      const cols = [...row.children];
+      if (cols.length >= 2) {
+        const key = cols[0].textContent.trim().toLowerCase();
+        const value = cols[1].textContent.trim();
+        if (key === 'style') {
+          value.split(',').forEach((style) => {
+            const cls = style.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+            if (cls) section.classList.add(cls);
+          });
+        } else if (key) {
+          section.dataset[toCamelCaseKey(key)] = value;
+        }
+      }
+    });
+    meta.remove();
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
 export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
+  decorateSectionMetadata(main);
   decorateSections(main);
   decorateBlocks(main);
   decorateButtons(main);
