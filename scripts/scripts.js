@@ -143,10 +143,41 @@ function decorateButtons(main) {
 }
 
 /**
+ * Move a set of attributes from one element to another.
+ * @param {Element} from the element to move attributes from
+ * @param {Element} to the element to move attributes to
+ * @param {string[]} [attributes] the list of attribute names to move (defaults to all)
+ */
+export function moveAttributes(from, to, attributes) {
+  const attrs = attributes || [...from.attributes].map(({ nodeName }) => nodeName);
+  attrs.forEach((attr) => {
+    const value = from.getAttribute(attr);
+    if (value) {
+      to.setAttribute(attr, value);
+      from.removeAttribute(attr);
+    }
+  });
+}
+
+/**
+ * Move instrumentation (authoring) attributes from one element to another.
+ * @param {Element} from the element to move attributes from
+ * @param {Element} to the element to move attributes to
+ */
+export function moveInstrumentation(from, to) {
+  moveAttributes(
+    from,
+    to,
+    [...from.attributes]
+      .map(({ nodeName }) => nodeName)
+      .filter((attr) => attr.startsWith('data-aue-') || attr.startsWith('data-richtext-')),
+  );
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
-// eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);

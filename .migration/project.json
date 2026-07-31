@@ -1,8 +1,10 @@
 {
+  "type": "doc",
   "sites": {
     "eds-ema-demo": {
       "previewOrg": "pranav-joshi-git",
-      "previewSite": "eds-ema-demo"
+      "previewSite": "eds-ema-demo",
+      "libraryUrl": "https://main--sta-boilerplate--aemdemos.aem.page/tools/sidekick/library.json"
     }
   }
 }
