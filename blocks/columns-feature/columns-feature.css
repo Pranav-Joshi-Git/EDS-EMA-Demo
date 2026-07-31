@@ -23,13 +23,18 @@
   order: 0;
 }
 
-/* multi-image column (hero): the source lays 3 pictures out in a 2-col grid
-   with an 8px gap; the images live inside a single <p>. */
-.columns-feature > div > .columns-feature-img-col p {
+/* multi-image column (hero): lay the pictures out in a 2-col grid with an 8px
+   gap. JS normalizes the pictures to be direct children of the column and adds
+   .columns-feature-img-grid, so layout no longer depends on <p> wrapping. */
+.columns-feature > div > .columns-feature-img-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
+}
+
+.columns-feature > div > .columns-feature-img-grid > p {
   margin: 0;
+  display: contents;
 }
 
 .columns-feature > div > .columns-feature-img-col picture {
