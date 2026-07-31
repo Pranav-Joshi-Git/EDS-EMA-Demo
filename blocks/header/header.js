@@ -127,6 +127,25 @@ export default async function decorate(block) {
     if (classNames[i]) section.classList.add(classNames[i]);
   });
 
+  // Inject the brand logo from the repo (icons/logo.svg) so it is served from
+  // code and never needs uploading as a content asset.
+  const brandLink = nav.querySelector('.nav-brand a');
+  if (brandLink && !brandLink.querySelector('.nav-logo')) {
+    try {
+      const logoResp = await fetch('/icons/logo.svg');
+      if (logoResp.ok) {
+        const svg = await logoResp.text();
+        const logo = document.createElement('span');
+        logo.className = 'nav-logo';
+        logo.setAttribute('aria-hidden', 'true');
+        logo.innerHTML = svg;
+        brandLink.prepend(logo);
+      }
+    } catch (e) {
+      // logo is decorative; ignore fetch/parse failures
+    }
+  }
+
   // Decorate dropdowns in the nav-sections list.
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
