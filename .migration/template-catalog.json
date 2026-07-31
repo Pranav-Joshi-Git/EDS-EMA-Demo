@@ -1,0 +1,57 @@
+{
+  "templates": [
+    {
+      "name": "landing-page",
+      "representativePages": [
+        "https://wknd-trendsetters.site/",
+        "https://wknd-trendsetters.site/fashion-trends-young-adults-casual-sport"
+      ],
+      "urls": [
+        "https://wknd-trendsetters.site/",
+        "https://wknd-trendsetters.site/fashion-trends-of-the-season",
+        "https://wknd-trendsetters.site/fashion-trends-young-adults",
+        "https://wknd-trendsetters.site/fashion-trends-young-adults-casual-sport"
+      ],
+      "description": "Hero-led editorial landing page with a full-width hero banner followed by stacked content sections (rich text, images, and feature groupings). Used for the homepage and topical trend landing pages."
+    },
+    {
+      "name": "content-listing",
+      "representativePages": [
+        "https://wknd-trendsetters.site/blog",
+        "https://wknd-trendsetters.site/case-studies"
+      ],
+      "urls": [
+        "https://wknd-trendsetters.site/blog",
+        "https://wknd-trendsetters.site/case-studies",
+        "https://wknd-trendsetters.site/fashion-insights"
+      ],
+      "description": "Listing/index page with a hero header followed by card grids and grouped content collections that link to detail pages."
+    },
+    {
+      "name": "blog-article",
+      "representativePages": [
+        "https://wknd-trendsetters.site/blog/ace-pro-court-polo"
+      ],
+      "urls": [
+        "https://wknd-trendsetters.site/blog/ace-pro-court-polo",
+        "https://wknd-trendsetters.site/blog/fashion-blog-post",
+        "https://wknd-trendsetters.site/blog/fashion-trends-young-culture",
+        "https://wknd-trendsetters.site/blog/fashion-trends-young-style",
+        "https://wknd-trendsetters.site/blog/flip-flop-summer-style",
+        "https://wknd-trendsetters.site/blog/latest-trends-young-casual-fashion",
+        "https://wknd-trendsetters.site/blog/street-style-trends"
+      ],
+      "description": "Blog article detail page with a hero header followed by long-form article body content and supporting media sections."
+    },
+    {
+      "name": "faq-page",
+      "representativePages": [
+        "https://wknd-trendsetters.site/faq"
+      ],
+      "urls": [
+        "https://wknd-trendsetters.site/faq"
+      ],
+      "description": "FAQ page combining a hero header, an accordion of expandable question/answer items, and a supporting cards section."
+    }
+  ]
+}
