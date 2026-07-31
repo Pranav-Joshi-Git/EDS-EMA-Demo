@@ -6,35 +6,49 @@
   gap: 32px;
 }
 
+/* all images: rounded corners + cover crop at a 3:2 ratio, matching the source */
 .columns-feature img {
+  display: block;
   width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 20px;
 }
 
 .columns-feature > div > div {
   order: 1;
 }
 
-/* right-hand image stack: vertical with an 8px gap, matching the source */
 .columns-feature > div > .columns-feature-img-col {
   order: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 }
 
-.columns-feature > div > .columns-feature-img-col img {
+/* multi-image column (hero): the source lays 3 pictures out in a 2-col grid
+   with an 8px gap; the images live inside a single <p>. */
+.columns-feature > div > .columns-feature-img-col p {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 0;
+}
+
+.columns-feature > div > .columns-feature-img-col picture {
   display: block;
 }
 
+.columns-feature > div > .columns-feature-img-col picture img {
+  height: 100%;
+}
+
 /* hero CTAs: first link = primary (filled), second = secondary (outline) */
-.columns-feature > div > div > p:last-of-type {
+.columns-feature > div > div:not(.columns-feature-img-col) > p:last-of-type {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 24px;
 }
 
-.columns-feature > div > div > p:last-of-type a {
+.columns-feature > div > div:not(.columns-feature-img-col) > p:last-of-type a {
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
@@ -48,22 +62,22 @@
   cursor: pointer;
 }
 
-.columns-feature > div > div > p:last-of-type a:first-child {
+.columns-feature > div > div:not(.columns-feature-img-col) > p:last-of-type a:first-child {
   background-color: var(--text-color);
   color: var(--background-color);
 }
 
-.columns-feature > div > div > p:last-of-type a:first-child:hover {
+.columns-feature > div > div:not(.columns-feature-img-col) > p:last-of-type a:first-child:hover {
   background-color: var(--dark-color);
   border-color: var(--dark-color);
 }
 
-.columns-feature > div > div > p:last-of-type a:last-child {
+.columns-feature > div > div:not(.columns-feature-img-col) > p:last-of-type a:last-child {
   background-color: var(--background-color);
   color: var(--text-color);
 }
 
-.columns-feature > div > div > p:last-of-type a:last-child:hover {
+.columns-feature > div > div:not(.columns-feature-img-col) > p:last-of-type a:last-child:hover {
   background-color: var(--light-color);
 }
 

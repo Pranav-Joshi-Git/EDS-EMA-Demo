@@ -1,3 +1,23 @@
+/* FAQ section: on desktop, lay the heading beside the accordion (two columns),
+   matching the source. The section has a default-content-wrapper (heading +
+   subheading) and an accordion-faq-wrapper; align them in a 2-col grid. */
+@media (width >= 900px) {
+  main .section.accordion-faq-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 64px;
+  }
+
+  main .section.accordion-faq-container > .default-content-wrapper,
+  main .section.accordion-faq-container > .accordion-faq-wrapper {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    max-width: none;
+  }
+}
+
 .accordion-faq {
   display: flex;
   flex-direction: column;
