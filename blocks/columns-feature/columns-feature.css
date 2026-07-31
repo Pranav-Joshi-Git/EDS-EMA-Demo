@@ -1,6 +1,9 @@
+/* stylelint-disable no-descending-specificity */
+
 .columns-feature > div {
   display: flex;
   flex-direction: column;
+  gap: 32px;
 }
 
 .columns-feature img {
@@ -11,19 +14,64 @@
   order: 1;
 }
 
+/* right-hand image stack: vertical with an 8px gap, matching the source */
 .columns-feature > div > .columns-feature-img-col {
   order: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .columns-feature > div > .columns-feature-img-col img {
   display: block;
 }
 
+/* hero CTAs: first link = primary (filled), second = secondary (outline) */
+.columns-feature > div > div > p:last-of-type {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.columns-feature > div > div > p:last-of-type a {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--text-color);
+  border-radius: 9999px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.columns-feature > div > div > p:last-of-type a:first-child {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
+.columns-feature > div > div > p:last-of-type a:first-child:hover {
+  background-color: var(--dark-color);
+  border-color: var(--dark-color);
+}
+
+.columns-feature > div > div > p:last-of-type a:last-child {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.columns-feature > div > div > p:last-of-type a:last-child:hover {
+  background-color: var(--light-color);
+}
+
 @media (width >= 900px) {
   .columns-feature > div {
     align-items: center;
     flex-direction: unset;
-    gap: 24px;
+    gap: 64px;
   }
 
   .columns-feature > div > div {
