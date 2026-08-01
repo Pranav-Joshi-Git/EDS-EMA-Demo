@@ -31,8 +31,11 @@
     ]
   },
   "usage": {
-    "pagesUsing": ["/index"],
-    "reuseCount": 1,
-    "lastUsed": "2026-07-31T14:47:00.000Z"
+    "pagesUsing": [
+      "/index",
+      "/fashion-trends-young-adults"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-08-01T00:00:00.000Z"
   }
 }
