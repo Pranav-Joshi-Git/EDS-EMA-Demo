@@ -5,29 +5,26 @@ export default function decorate(block) {
   // setup image columns
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {
-      const pic = col.querySelector('picture');
-      if (pic) {
-        const picWrapper = pic.closest('div');
-        if (picWrapper && picWrapper.children.length === 1) {
-          // picture is only content in column
-          picWrapper.classList.add('columns-feature-img-col');
-        }
-      }
+      const pictures = [...col.querySelectorAll('picture')];
+      if (pictures.length === 0) return;
 
-      // Normalize the image column so layout does not depend on how the
-      // source wrapped the images (one <p> vs one <p> per picture vs bare).
-      // Move every <picture> to be a direct child of the column and drop the
-      // now-empty <p> wrappers. When 2+ images share the column, mark it so
-      // CSS lays them out in a grid instead of stacking.
-      if (col.classList.contains('columns-feature-img-col')) {
-        const pictures = [...col.querySelectorAll('picture')];
-        if (pictures.length > 1) {
-          pictures.forEach((picture) => col.append(picture));
-          [...col.querySelectorAll('p')].forEach((p) => {
-            if (!p.querySelector('picture') && p.textContent.trim() === '') p.remove();
-          });
-          col.classList.add('columns-feature-img-grid');
-        }
+      // An image column is one whose only meaningful content is pictures
+      // (no heading/body text). This holds regardless of how the source
+      // wrapped the pictures — one shared <p>, one <p> each, or bare.
+      const hasText = col.textContent.trim().length > 0;
+      if (!hasText) {
+        col.classList.add('columns-feature-img-col');
+
+        // Normalize: move every <picture> to be a direct child of the column
+        // and drop the now-empty <p> wrappers, so layout does not depend on
+        // the source's paragraph structure.
+        pictures.forEach((picture) => col.append(picture));
+        [...col.querySelectorAll('p')].forEach((p) => {
+          if (!p.querySelector('picture') && p.textContent.trim() === '') p.remove();
+        });
+
+        // 2+ images → lay them out in a grid; a single image stays full width.
+        if (pictures.length > 1) col.classList.add('columns-feature-img-grid');
       }
     });
   });
