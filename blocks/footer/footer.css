@@ -30,7 +30,13 @@ footer .footer-brand a {
   text-decoration: none;
 }
 
-footer .footer-brand > p a img {
+footer .footer-brand .footer-logo {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+}
+
+footer .footer-brand .footer-logo svg {
   width: 32px;
   height: 32px;
 }
@@ -61,7 +67,13 @@ footer .footer-brand ul a:hover {
   opacity: 0.7;
 }
 
-footer .footer-brand ul a img {
+footer .footer-brand ul a .footer-social-icon {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+}
+
+footer .footer-brand ul a .footer-social-icon svg {
   width: 16px;
   height: 16px;
 }
