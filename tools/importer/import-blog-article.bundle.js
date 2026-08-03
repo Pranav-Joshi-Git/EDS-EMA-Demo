@@ -57,6 +57,22 @@ var CustomImportScript = (() => {
     element.replaceWith(block);
   }
 
+  // tools/importer/parsers/table.js
+  function parse2(element, { document }) {
+    const rows = Array.from(element.querySelectorAll("tr"));
+    if (rows.length === 0) {
+      element.remove();
+      return;
+    }
+    const cells = rows.map((tr) => Array.from(tr.children).map((cell) => {
+      const frag = document.createElement("div");
+      frag.append(...cell.childNodes);
+      return frag;
+    }));
+    const block = WebImporter.Blocks.createBlock(document, { name: "table", cells });
+    element.replaceWith(block);
+  }
+
   // tools/importer/transformers/wknd-trendsetters-cleanup.js
   var TransformHook = { beforeTransform: "beforeTransform", afterTransform: "afterTransform" };
   function transform(hookName, element, payload) {
@@ -100,7 +116,8 @@ var CustomImportScript = (() => {
 
   // tools/importer/import-blog-article.js
   var parsers = {
-    "columns-feature": parse
+    "columns-feature": parse,
+    table: parse2
   };
   var PAGE_TEMPLATE = {
     name: "blog-article",
@@ -119,6 +136,12 @@ var CustomImportScript = (() => {
         name: "columns-feature",
         instances: [
           "#main-content > section.section:nth-of-type(1) > div.container > div.grid-layout.grid-gap-lg"
+        ]
+      },
+      {
+        name: "table",
+        instances: [
+          "#main-content table"
         ]
       }
     ],

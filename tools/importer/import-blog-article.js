@@ -3,6 +3,7 @@
 
 // PARSER IMPORTS (reused)
 import columnsFeatureParser from './parsers/columns-feature.js';
+import tableParser from './parsers/table.js';
 
 // TRANSFORMER IMPORTS (site-wide, template-driven — shared)
 import cleanupTransformer from './transformers/wknd-trendsetters-cleanup.js';
@@ -11,6 +12,7 @@ import sectionsTransformer from './transformers/wknd-trendsetters-sections.js';
 // PARSER REGISTRY
 const parsers = {
   'columns-feature': columnsFeatureParser,
+  table: tableParser,
 };
 
 // PAGE TEMPLATE CONFIGURATION - Embedded from page-templates.json (blog-article)
@@ -31,6 +33,12 @@ const PAGE_TEMPLATE = {
       name: 'columns-feature',
       instances: [
         '#main-content > section.section:nth-of-type(1) > div.container > div.grid-layout.grid-gap-lg',
+      ],
+    },
+    {
+      name: 'table',
+      instances: [
+        '#main-content table',
       ],
     },
   ],
