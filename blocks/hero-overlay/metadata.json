@@ -31,8 +31,11 @@
     ]
   },
   "usage": {
-    "pagesUsing": ["/index"],
-    "reuseCount": 1,
-    "lastUsed": "2026-07-31T14:47:00.000Z"
+    "pagesUsing": [
+      "/index",
+      "/blog"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-08-03T04:47:00.202925Z"
   }
 }

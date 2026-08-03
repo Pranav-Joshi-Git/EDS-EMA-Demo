@@ -241,6 +241,111 @@
           ]
         }
       ]
+    },
+    {
+      "name": "content-listing",
+      "urls": [
+        "https://wknd-trendsetters.site/blog",
+        "https://wknd-trendsetters.site/case-studies",
+        "https://wknd-trendsetters.site/fashion-insights"
+      ],
+      "representativeUrl": "https://wknd-trendsetters.site/blog",
+      "coverageGaps": [
+        {
+          "url": "https://wknd-trendsetters.site/case-studies",
+          "sections": [
+            {
+              "sectionSignature": "gallery",
+              "nodeMapId": "rc4"
+            },
+            {
+              "sectionSignature": "tabs",
+              "nodeMapId": "rc5"
+            },
+            {
+              "sectionSignature": "hero-overlay",
+              "nodeMapId": "rc6"
+            }
+          ]
+        }
+      ],
+      "description": "Index/listing pages: hero, featured 2-column article, 4-column article card grid, optional image gallery, testimonial tabs, dark CTA overlay, and accent CTA. Reuses homepage/landing block variants.",
+      "blocks": [
+        {
+          "name": "columns-feature",
+          "instances": [
+            "#main-content > header.section > div.container > div.grid-layout.grid-gap-xxl:has(.grid-layout)",
+            "#main-content > section.section > div.container > div.grid-layout.tablet-1-column.grid-gap-lg:not(.desktop-3-column):not(.desktop-4-column)"
+          ]
+        },
+        {
+          "name": "cards-article",
+          "instances": [
+            "#main-content > section.section > div.container > div.grid-layout.desktop-4-column.grid-gap-md"
+          ]
+        },
+        {
+          "name": "cards-gallery",
+          "instances": [
+            "#main-content > section.section > div.container > div.grid-layout.desktop-4-column.grid-gap-sm",
+            "#main-content > section.section > div.container > div.grid-layout.desktop-3-column.grid-gap-sm"
+          ]
+        },
+        {
+          "name": "tabs-testimonial",
+          "instances": [
+            "#main-content > section.section > div.container > div.tabs-wrapper"
+          ]
+        },
+        {
+          "name": "hero-overlay",
+          "instances": [
+            "#main-content > section.section.inverse-section > div.container > div.grid-layout.desktop-1-column > div.utility-position-relative"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "rc2",
+          "name": "Hero",
+          "selector": "#main-content > header.section.secondary-section",
+          "style": "secondary",
+          "blocks": [
+            "columns-feature"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc3",
+          "name": "Featured article",
+          "selector": "#main-content > section.section:nth-of-type(1)",
+          "style": null,
+          "blocks": [
+            "columns-feature"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc4",
+          "name": "Latest articles / gallery",
+          "selector": "#articles",
+          "style": "secondary",
+          "blocks": [
+            "cards-article"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc5",
+          "name": "CTA",
+          "selector": "#main-content > section.section.accent-section",
+          "style": "accent",
+          "blocks": [],
+          "defaultContent": [
+            "#main-content > section.section.accent-section > div.container"
+          ]
+        }
+      ]
     }
   ]
 }
